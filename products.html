@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>Refugio de mascotas</title>
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <h1>Bienvenidos al Refugio!</h1>
+    <h4>Todos estos amigos de cuatro patas están esperando un amigo que los lleve a un nuevo hogar.</h3>
+  </div>
+
+
+  <div class="row  my-5">
+
+    <div class="card-deck row-cols-md-3 p-3 col-9">
+
+      <!-- <div class="col mb-4 md-4 puppy-card d-none" id="puppy-card">
+        <div class="card" id="">
+          <img src="" class="card-img-top" id="puppy-pic" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+
+
+    <div class="col-3 p-3">
+      <h4 class="text-center">Mi cucha</h4>
+
+      <ul class="list-group list-group-flush text-center chosen-puppies">
+        <li class="list-group-item list-group-item-success">Amigos a quienes darás hogar</li>
+
+      </ul>
+
+      <div class="text-center my-2 p-2">
+        <input type="submit" class="submit btn btn-danger mb-2 px-5 text-center finish-process" data-toggle="modal"
+          data-target="#exampleModal" value="Llevarlos a casa!">
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Hurra!!!</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>Te vas a llevar a los siguientes animalitos a tu casa:</h5>
+
+            <ul class="list-group list-group-flush text-center billed-puppies">
+
+            </ul>
+
+            <hr>
+            <p id="fecha" class="text-center"></p>
+            <h5 id="puppy-amount" class="text-center"></h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Optional JavaScript -->
+  <script src="products.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
