@@ -13,6 +13,17 @@ let puppies = [
     { id: 7, name: "Bermuda", age: 10, size: "mediano", pic: "http://place-puppy.com/201x200", description: "Como su nombre lo anticipa, es una princesa relajada y le encanta sentarse al sol a descansar." }
 ];
 
+/* todavia no funciona */
+document.querySelector(".ordenar").addEventListener("click", (e) => {
+  e.preventDefault();
+  puppies.sort(function(a, b) {
+    return a.age - b.age;
+  });
+})
+
+
+console.log(puppies);
+
 let cardDeck=document.querySelector(".card-deck");
 
 puppies.forEach((puppy, i) => {
@@ -56,7 +67,7 @@ puppies.forEach((puppy, i) => {
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardText);
   cardBody.appendChild(ageLi);
-  cardBody.appendChild(ageLi);
+  cardBody.appendChild(sizeLi);
 
   // listItem.innerHTML+= listItemCheckbox.outerHTML + listItemLabel.outerHTML + editButton.outerHTML + deleteButton.outerHTML;
   // listElement.appendChild(listItem);
@@ -72,26 +83,30 @@ puppies.forEach((puppy, i) => {
 
 
 
-
+let buyButtons=Array.from(document.querySelectorAll(".buyButton"));
 // console.log(buyButtons)
 
 
 let puppyCart = document.querySelector('.chosen-puppies');
 
 
-let buyButtons=Array.from(document.querySelectorAll(".buyButton"));
-
 buyButtons.forEach((buyButton, i) => {
 
   buyButton.addEventListener('click', function() {
+
   let puppyItemLi = document.createElement('li');
-  puppyItemLi.classList.add("list-group-item");
+  puppyItemLi.classList.add("list-group-item", "cart-item");
 
   // console.log(this.id)
-  let puppyItem=puppies.find(puppy => `id-${puppy.id}` == this.id)
+  let puppyItem=puppies.find(puppy => `id-${puppy.id}` == this.id);
   // console.log(puppyItem);
-  puppyItemLi.textContent= puppyItem.name
+  puppyItemLi.textContent= puppyItem.name;
   puppyCart.appendChild(puppyItemLi);
+
+  puppyItemLi.addEventListener("click", function() {
+    puppyCart.removeChild(puppyItemLi);
+    alert(`${puppyItem.name} fue removido de la cucha con éxito`);
+  });
 
   let cart=JSON.parse(sessionStorage.getItem('cart'));
 
@@ -105,21 +120,34 @@ buyButtons.forEach((buyButton, i) => {
 
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
 document.querySelector(".finish-process").addEventListener('click', function() {
   let bill=[];
   (JSON.parse(sessionStorage.getItem('cart'))).map(item => {
     bill.push(puppies.find(puppy => puppy.id == item));
   });
-  console.log(bill);
+  // console.log(bill);
 
   
   if(bill.length==0)
   {
     alert("cucha vacia");
     let modal = document.querySelector(".modal");
-    console.log(modal);
+    // console.log(modal);
     modal.remove();
     return;
+    /* hay un bug, si lo borro no lo puedo volver a crear y me da eror */
   }
   
   let billList = document.querySelector('.billed-puppies');

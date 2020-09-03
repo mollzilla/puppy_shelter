@@ -20,7 +20,10 @@
     <h4>Todos estos amigos de cuatro patas están esperando un amigo que los lleve a un nuevo hogar.</h3>
   </div>
 
-
+  <div class="col-6 text-center">
+    <button type="button" class="btn btn-success p-4 ordenar" type="submit">Ordenar por edad</button>
+  </div>
+  
   <div class="row  my-5">
 
     <div class="card-deck row-cols-md-3 p-3 col-9">
@@ -76,12 +79,33 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+            <button type="button" class="btn btn-primary confirm" data-target="#modal-2" data-dismiss="modal" data-toggle="modal-2">Confirmar</button>
           </div>
         </div>
       </div>
     </div>
 
+ 
+<!-- Modal -->
+<div class="modal modal-2 fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   </div>
 
