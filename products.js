@@ -13,7 +13,7 @@ let puppies = [
     { id: 7, name: "Bermuda", age: 10, size: "mediano", pic: "http://place-puppy.com/201x200", description: "Como su nombre lo anticipa, es una princesa relajada y le encanta sentarse al sol a descansar." }
 ];
 
-/* todavia no funciona */
+/* todavia no funciona. hay que hacer que ademas de ordenar los objetos, haga un insert before segun el id de cada tarjeta */
 document.querySelector(".ordenar").addEventListener("click", (e) => {
   e.preventDefault();
   puppies.sort(function(a, b) {
@@ -29,6 +29,7 @@ let cardDeck=document.querySelector(".card-deck");
 puppies.forEach((puppy, i) => {
   let parentCard=document.createElement("div");
   parentCard.classList.add("col", "mb-4", "puppy-card");
+  parentCard.setAttribute("id", puppy.id);
 
   let card=document.createElement("div");
   card.setAttribute("class", "card");
@@ -80,6 +81,7 @@ puppies.forEach((puppy, i) => {
 
   cardDeck.appendChild(parentCard);
 });
+
 
 
 
