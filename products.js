@@ -15,13 +15,23 @@ let puppies = [
 
 window.addEventListener('load', cardRender);
 
-console.log(puppies);
-
+/*capturo el listado de puppies */
 let cardDeck=document.querySelector(".card-deck");
+
+/* armo lista de botones de agregar a la cucha */
 let buyButtons=[];
 
+/* capturo la lista de pupppies facturados */
+let billList = document.querySelector('.billed-puppies');
+
+let cart=JSON.parse(sessionStorage.getItem('cart'));
+
+/* funcion que renderiza las tarjetas del listado */
 function cardRender() {
+
+  /* reinicializo los botones para que queden adecuados a las tarjetas nuevamente renderizadas */
   buyButtons=[];
+
   puppies.forEach((puppy, i) => {
     let parentCard=document.createElement("div");
     parentCard.classList.add("col", "mb-4", "puppy-card");
@@ -80,58 +90,62 @@ function cardRender() {
 
   let puppyCart = document.querySelector('.chosen-puppies');
 
-
   buyButtons.forEach((buyButton, i) => {
 
     buyButton.addEventListener('click', function() {
 
-    let puppyItemLi = document.createElement('li');
-    puppyItemLi.classList.add("list-group-item", "cart-item");
-
-    // console.log(this.id)
     let puppyItem=puppies.find(puppy => `id-${puppy.id}` == this.id);
-    // console.log(puppyItem);
-    puppyItemLi.textContent= puppyItem.name;
-    puppyItemLi.id= puppyItem.id;
-    puppyCart.appendChild(puppyItemLi);
+    let puppyItemLi = document.createElement('li');
 
-    let cart=JSON.parse(sessionStorage.getItem('cart'));
+    cart=JSON.parse(sessionStorage.getItem('cart'));
 
-    console.log(cart)
+    if (!cart.includes(puppyItem.id))
+    {
 
-    console.log(puppyItemLi)
+      puppyItemLi.classList.add("list-group-item", "cart-item")
+
+      puppyItemLi.textContent= puppyItem.name;
+      puppyItemLi.id= puppyItem.id;
+      puppyCart.appendChild(puppyItemLi);
+  
+      if(cart.find(item => item==puppyItem.id)==undefined)
+        cart.push(puppyItem.id);
+  
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+  
+      event.preventDefault();
+
+    }
+
     puppyItemLi.addEventListener("click", function() {
-      puppyCart.removeChild(puppyItemLi);
-      puppyIndex=cart.findIndex(x => x==(puppyItemLi.id));
+      let puppyIndex=cart.findIndex(x => x==(puppyItemLi.id));
+
       cart.splice(puppyIndex, 1);
       alert(`${puppyItem.name} fue removido de la cucha con éxito`);
-      console.log(cart);
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+      console.log(sessionStorage);
+      puppyCart.removeChild(puppyItemLi);
     });
 
-    if(cart.find(item => item==puppyItem.id)==undefined)
-      cart.push(puppyItem.id);
 
-    sessionStorage.setItem("cart", JSON.stringify(cart));
-
-    event.preventDefault();
     });
 
   });
 
 }
 
-/* todavia no funciona. hay que hacer que ademas de ordenar los objetos, haga un insert before segun el id de cada tarjeta */
+
 document.querySelector(".ordenar-edad").addEventListener("click", (e) => {
   e.preventDefault();
   puppies.sort(function(a, b) {
     return a.age - b.age;
   });
-  console.log(cardDeck);
+
   while (cardDeck.firstChild) {
     cardDeck.removeChild(cardDeck.firstChild);
   }
   cardRender();
-  console.log(buyButtons);
+
 });
 
 
@@ -150,47 +164,43 @@ document.querySelector(".ordenar-nombre").addEventListener("click", (e) => {
   cardRender();
 });
 
+console.log("mili");
+
+document.querySelector(".ordenar-size").addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("mili")
+  let tiny=puppies.filter(puppy => puppy.size=="muy pequeño")
+  let small=puppies.filter(puppy => puppy.size=="pequeño")
+  let medium=puppies.filter(puppy => puppy.size=="mediano")
+  let large=puppies.filter(puppy => puppy.size=="grande")
+  let veryLarge=puppies.filter(puppy => puppy.size=="muy grande")
+
+  puppies=[...tiny, ...small, ...medium, ...large, ...veryLarge]
+  cardDeck.innerHTML="";
+  cardRender();
+});
 
 
+document.querySelector(".finish-process").addEventListener('click', function(e) {
 
+  if (!this.hasAttribute("data-target"))
+    this.setAttribute("data-target", "#exampleModal")
 
-
-// console.log(buyButtons)
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.querySelector(".finish-process").addEventListener('click', function() {
   let bill=[];
+console.log(sessionStorage);
   (JSON.parse(sessionStorage.getItem('cart'))).map(item => {
     bill.push(puppies.find(puppy => puppy.id == item));
   });
-  // console.log(bill);
 
-  
+  console.log(bill)
   if(bill.length==0)
   {
     alert("cucha vacia");
-    let modal = document.querySelector(".modal");
-    // console.log(modal);
-    modal.remove();
-    return;
-    /* hay un bug, si lo borro no lo puedo volver a crear y me da eror */
+    console.log(this);
+    this.removeAttribute("data-target");
   }
   
-  let billList = document.querySelector('.billed-puppies');
-  
   bill.forEach(puppy => {
-    console.log(puppy);
     let billedPuppy = document.createElement('li');
     billedPuppy.classList.add("list-group-item", "font-weight-bold");
     billedPuppy.textContent= `${puppy.name}! Recuerda que es de tamaño ${puppy.size} y tiene ${puppy.age} años.`
@@ -202,5 +212,11 @@ document.querySelector(".finish-process").addEventListener('click', function() {
 
 });
 
+function clearModal() {
+  while (billList.firstChild) {
+    billList.removeChild(billList.firstChild);
+  }
+}
 
-console.log("mili");
+document.querySelector("#cancel-icon").addEventListener('click', clearModal);
+document.querySelector("#cancel-button").addEventListener('click', clearModal);

@@ -1,8 +1,6 @@
-console.log("mili");
+// console.log(sessionStorage);
 
-console.log(sessionStorage);
-
-console.log(localStorage);
+// console.log(localStorage);
 
 let adopterData={};
 
@@ -22,27 +20,5 @@ document.querySelector("#finalize-adoption").addEventListener("click", function(
   sessionStorage.setItem("adopteData", adopterData);
 });
 
-console.log(adopterData);
 
-console.log(sessionStorage);
-
-
-
-// document.querySelector(".ordenar-edad").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   puppies=puppies.sort(function(a, b) {
-//     return a.age - b.age;
-//   });
-//   cardDeck.innerHTML="";
-//   cardRender();
-// });
-
-// document.querySelector(".ordenar-edad").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   puppies=puppies.sort(function(a, b) {
-//     return a.age - b.age;
-//   });
-//   cardDeck.innerHTML="";
-//   cardRender();
-// });
 
