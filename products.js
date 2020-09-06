@@ -161,7 +161,8 @@ function cardRender() {
 
     puppyItemLi.addEventListener("click", function() {
       let puppyIndex=cart.findIndex(x => x==(puppyItemLi.id));
-
+      $(this).tooltip('hide'); 
+      
       cart.splice(puppyIndex, 1);
       alert(`${puppyItem.name} fue removido de la cucha con éxito`);
       sessionStorage.setItem("cart", JSON.stringify(cart));
@@ -169,8 +170,7 @@ function cardRender() {
       puppyCart.removeChild(puppyItemLi);
     });
 
-
-    });
+  });
 
   });
 
