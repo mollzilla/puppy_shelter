@@ -192,7 +192,7 @@ trendingPuppies.forEach(puppy => {
   let captionDiv=document.createElement('div');
   captionDiv.classList.add("carousel-caption", "d-md-block")
 
-  let caption=document.createElement('h5');
+  let caption=document.createElement('h3');
   caption.textContent=puppy.name
 
   captionDiv.appendChild(caption);
