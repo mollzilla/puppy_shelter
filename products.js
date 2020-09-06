@@ -138,7 +138,7 @@ function cardRender() {
       puppyItemLi.setAttribute("data-placement", "bottom");
       puppyItemLi.setAttribute("title", "Remover de la cucha");
       // puppyItemLi.tooltip();
-      console.log(puppyItemLi);
+
       puppyCart.appendChild(puppyItemLi);
 
       $(function () {
@@ -174,9 +174,6 @@ function cardRender() {
 let trendingPuppies=puppies.filter(puppy => puppy.id==1 || puppy.id==5 || puppy.id==6);
 let carousel=document.querySelector('.carousel-inner');
 
-
-console.log(trendingPuppies)
-
 trendingPuppies.forEach(puppy => {
   let trendingDiv=document.createElement('div');
   trendingDiv.classList.add("carousel-item");
@@ -196,13 +193,9 @@ trendingPuppies.forEach(puppy => {
   captionDiv.appendChild(caption);
   trendingDiv.appendChild(trendingImg);
   trendingDiv.appendChild(captionDiv);
-  console.log(trendingDiv)
 
   carousel.appendChild(trendingDiv);
 });
-
-// carousel.firstChild.classList.add("active");
-console.log(carousel.firstChild)
 
 
 document.querySelector(".ordenar-edad").addEventListener("click", (e) => {
@@ -255,16 +248,14 @@ document.querySelector(".finish-process").addEventListener('click', function(e) 
     this.setAttribute("data-target", "#exampleModal")
 
   let bill=[];
-console.log(sessionStorage);
+  console.log(sessionStorage);
   (JSON.parse(sessionStorage.getItem('cart'))).map(item => {
     bill.push(puppies.find(puppy => puppy.id == item));
   });
 
-  console.log(bill)
   if(bill.length==0)
   {
     alert("cucha vacia");
-    console.log(this);
     this.removeAttribute("data-target");
   }
   
