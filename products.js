@@ -1,3 +1,30 @@
+
+let submitButton=document.querySelector(".login");
+
+// localStorage.clear();
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  let email=(document.getElementById('staticEmail')).value;
+  let password=(document.querySelector('.password')).value;
+
+
+  if (localStorage.getItem('email') && localStorage.getItem('email')==email) {
+    document.querySelector("#user").textContent=`Bienvenido, ${localStorage.getItem('email')}!`;
+  } else {
+    document.querySelector("#user").textContent="Usuario desconocido, te gustaría crear una cuenta?";
+  }  
+  console.log(localStorage.getItem('email'), localStorage.getItem('password'))
+
+});
+
+// localStorage.setItem('email', email);
+// localStorage.setItem('password', password)
+
+
+console.log(localStorage.getItem('email'))
+console.log(localStorage);
+
 sessionStorage.clear();
 sessionStorage.setItem("cart", "[]");
 
@@ -134,6 +161,39 @@ function cardRender() {
 
 }
 
+let trendingPuppies=puppies.filter(puppy => puppy.id==1 || puppy.id==5 || puppy.id==6);
+let carousel=document.querySelector('.carousel-inner');
+
+
+console.log(trendingPuppies)
+
+trendingPuppies.forEach(puppy => {
+  let trendingDiv=document.createElement('div');
+  trendingDiv.classList.add("carousel-item");
+  if(trendingPuppies.indexOf(puppy)==0)
+    trendingDiv.classList.add("active");
+
+  let trendingImg=document.createElement('img');
+  trendingImg.classList.add("d-block", "w-100");
+  trendingImg.setAttribute("src", puppy.pic)
+
+  let captionDiv=document.createElement('div');
+  captionDiv.classList.add("carousel-caption", "d-md-block")
+
+  let caption=document.createElement('h5');
+  caption.textContent=puppy.name
+
+  captionDiv.appendChild(caption);
+  trendingDiv.appendChild(trendingImg);
+  trendingDiv.appendChild(captionDiv);
+  console.log(trendingDiv)
+
+  carousel.appendChild(trendingDiv);
+});
+
+// carousel.firstChild.classList.add("active");
+console.log(carousel.firstChild)
+
 
 document.querySelector(".ordenar-edad").addEventListener("click", (e) => {
   e.preventDefault();
@@ -164,11 +224,9 @@ document.querySelector(".ordenar-nombre").addEventListener("click", (e) => {
   cardRender();
 });
 
-console.log("mili");
-
 document.querySelector(".ordenar-size").addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("mili")
+
   let tiny=puppies.filter(puppy => puppy.size=="muy pequeño")
   let small=puppies.filter(puppy => puppy.size=="pequeño")
   let medium=puppies.filter(puppy => puppy.size=="mediano")
@@ -220,3 +278,6 @@ function clearModal() {
 
 document.querySelector("#cancel-icon").addEventListener('click', clearModal);
 document.querySelector("#cancel-button").addEventListener('click', clearModal);
+
+
+

@@ -20,6 +20,10 @@
     <h4>Todos estos amigos de cuatro patas están esperando un amigo que los lleve a un nuevo hogar.</h3>
   </div>
 
+  <div class="row">
+
+
+
   <div class="col-6 text-center">
     <button type="button" class="btn btn-success p-3 m-4 ordenar-edad" type="submit">Ordenar por edad</button>
     <button type="button" class="btn btn-success p-3 m-4 ordenar-size" type="submit">Ordenar por tamaño</button>
@@ -29,9 +33,7 @@
   <div class="row  my-5">
 
     <div class="card-deck row-cols-md-3 p-3 col-9">
-
-
-
+      <!-- where the magic happens -->
     </div>
 
 
@@ -39,15 +41,59 @@
       <h4 class="text-center">Mi cucha</h4>
 
       <ul class="list-group list-group-flush text-center chosen-puppies">
-        <li class="list-group-item list-group-item-success">Amigos a quienes darás hogar</li>
-
+        <li class="list-group-item list-group-item-success col-8 offset-2">Amigos a quienes darás hogar</li>
+        <!-- <li class="list-group-item cart-item">Aún no has elegido un amigo.</li> -->
       </ul>
 
       <div class="text-center my-2 p-2">
         <input type="submit" class="submit btn btn-danger mb-2 px-5 text-center finish-process" data-toggle="modal"
           data-target="#exampleModal" value="Llevarlos a casa!">
       </div>
+
+      <h4 class="text-center my-3">Featured Puppies</h4>
+      <div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+    
+        </div>
+      </div>
+
+
+
+      <div class="text-center my-5 py-5">
+        <h4 id="user">Ingresar</h2>    
+    
+        <form class="col-8 offset-2 text-center">
+          <div class="form-group">
+            <label for="staticEmail" class="">Email</label>
+            <div class="">
+              <input type="text" class="name form-control-plaintext text-center" id="staticEmail" placeholder="tumail@tumail.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="">Contraseña</label>
+            <div class="">
+              <input type="password" class="password form-control" id="inputPassword">
+            </div>
+          </div>
+          <div class="my-3">
+            <input type="submit" class="login btn btn-danger mb-2 px-5 text-center" value="conectarse">
+          </div>
+        </form>
+    
+        <p>O conectarse con redes sociales</p>
+        <button type="button" class="btn btn-info px-4">Twitter</button>
+        <button type="button" class="btn btn-primary px-2">Facebook</button>
+    
+        <div class="form-group my-4">
+          <label for="inputPassword" class="">Aún no sos miembro? Sumate!</label>
+          <div class="">
+            <input type="submit" class="submit btn btn-danger mb-2 px-5 text-center" value="Crear cuenta">
+          </div>
+        </div>
+
     </div>
+
+
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -78,6 +124,29 @@
       </div>
     </div>
 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Optional JavaScript -->
   <script src="products.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -90,6 +159,12 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+  <script>
+    $("#modal-confirm-button").click(function(e) {
+      e.preventDefault()
+      $("#exampleModal").modal('hide');
+    });
+  </script>
 </body>
 
 </html>
