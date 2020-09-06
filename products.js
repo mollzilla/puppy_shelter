@@ -149,7 +149,12 @@ function cardRender() {
         cart.push(puppyItem.id);
   
       sessionStorage.setItem("cart", JSON.stringify(cart));
-  
+
+      noPuppies=document.querySelector("#no-puppies")
+
+      if(noPuppies)
+        noPuppies.remove();
+
       event.preventDefault();
 
     }
