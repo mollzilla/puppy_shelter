@@ -133,7 +133,17 @@ function cardRender() {
 
       puppyItemLi.textContent= puppyItem.name;
       puppyItemLi.id= puppyItem.id;
+
+      puppyItemLi.setAttribute("data-toggle", "tooltip");
+      puppyItemLi.setAttribute("data-placement", "bottom");
+      puppyItemLi.setAttribute("title", "Remover de la cucha");
+      // puppyItemLi.tooltip();
+      console.log(puppyItemLi);
       puppyCart.appendChild(puppyItemLi);
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
   
       if(cart.find(item => item==puppyItem.id)==undefined)
         cart.push(puppyItem.id);
