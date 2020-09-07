@@ -1,3 +1,6 @@
+localStorage.setItem('email', "mili@mili.com");
+localStorage.setItem('password', "12345")
+
 
 let submitButton=document.querySelector(".login");
 
@@ -18,8 +21,7 @@ submitButton.addEventListener('click', (event) => {
 
 });
 
-// localStorage.setItem('email', email);
-// localStorage.setItem('password', password)
+
 
 
 console.log(localStorage.getItem('email'))
@@ -235,13 +237,13 @@ document.querySelector(".ordenar-nombre").addEventListener("click", (e) => {
 document.querySelector(".ordenar-size").addEventListener("click", (e) => {
   e.preventDefault();
 
-  let tiny=puppies.filter(puppy => puppy.size=="muy pequeño")
-  let small=puppies.filter(puppy => puppy.size=="pequeño")
-  let medium=puppies.filter(puppy => puppy.size=="mediano")
-  let large=puppies.filter(puppy => puppy.size=="grande")
-  let veryLarge=puppies.filter(puppy => puppy.size=="muy grande")
+  let tiny=puppies.filter(puppy => puppy.size=="muy pequeño");
+  let small=puppies.filter(puppy => puppy.size=="pequeño");
+  let medium=puppies.filter(puppy => puppy.size=="mediano");
+  let large=puppies.filter(puppy => puppy.size=="grande");
+  let veryLarge=puppies.filter(puppy => puppy.size=="muy grande");
 
-  puppies=[...tiny, ...small, ...medium, ...large, ...veryLarge]
+  puppies=[...tiny, ...small, ...medium, ...large, ...veryLarge];
   cardDeck.innerHTML="";
   cardRender();
 });
@@ -250,7 +252,7 @@ document.querySelector(".ordenar-size").addEventListener("click", (e) => {
 document.querySelector(".finish-process").addEventListener('click', function(e) {
 
   if (!this.hasAttribute("data-target"))
-    this.setAttribute("data-target", "#exampleModal")
+    this.setAttribute("data-target", "#exampleModal");
 
   let bill=[];
   console.log(sessionStorage);
@@ -267,12 +269,12 @@ document.querySelector(".finish-process").addEventListener('click', function(e) 
   bill.forEach(puppy => {
     let billedPuppy = document.createElement('li');
     billedPuppy.classList.add("list-group-item", "font-weight-bold");
-    billedPuppy.textContent= `${puppy.name}! Recuerda que es de tamaño ${puppy.size} y tiene ${puppy.age} años.`
+    billedPuppy.textContent= `${puppy.name}! Recuerda que es de tamaño ${puppy.size} y tiene ${puppy.age} años.`;
     billList.appendChild(billedPuppy);
   });
 
   document.querySelector("#fecha").textContent=`Fecha de la adopción: ${new Date().toLocaleDateString("es", "ar")}`;
-  document.querySelector("#puppy-amount").innerHTML=`Estás cambiando la vida de ${bill.length} mascotas!`
+  document.querySelector("#puppy-amount").innerHTML=`Estás cambiando la vida de ${bill.length} mascotas!`;
 
 });
 
